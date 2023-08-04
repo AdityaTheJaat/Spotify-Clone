@@ -17,6 +17,10 @@ app.use(cors({
 }));
 app.use(express.json())
 
+app.get('/', (req, res)=> {
+  res.send("Hosted Successfully!")
+})
+
 //Env imports
 const PORT = 8000;
 const MONGODB_URL = process.env.MONGODB_URL;
