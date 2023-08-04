@@ -1,12 +1,11 @@
 import { toast } from "react-hot-toast";
 import { openUploadWidget } from "./CloudinaryService";
-import { UPLOAD_PRESET } from "../secrets";
 
 const CloudinaryUpload = ({setUrl, setName, text}) => {
   const uploadImageWidget = () => {
     let myUploadWidget = openUploadWidget({
       cloudName:"damn2yl49",
-      uploadPreset:UPLOAD_PRESET,
+      uploadPreset:process.env.REACT_APP_UPLOAD_PRESET,
       sources: ["local"],
       },
       function (error, result){

@@ -1,8 +1,7 @@
 import axios from "axios"
 import { toast } from "react-hot-toast"
-import { BACKEND_URL } from "../secrets";
 
-const URL = BACKEND_URL + "/songs";
+const URL = process.env.REACT_APP_BACKEND_URL + "/songs";
 
 export const createSong = async (body, navigate, token) => {
   const toastId = toast.loading("Loading...")
