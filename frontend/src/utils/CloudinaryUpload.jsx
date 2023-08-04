@@ -8,7 +8,7 @@ const CloudinaryUpload = ({setUrl, setName, text}) => {
     let myUploadWidget = openUploadWidget({
       cloudName:"damn2yl49",
       uploadPreset:UPLOAD_PRESET,
-      sources: ["local"],
+      sources: ["*"],
       },
       function (error, result){
         if(!error && result.event === "success"){
