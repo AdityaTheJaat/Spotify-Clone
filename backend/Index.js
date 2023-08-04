@@ -52,22 +52,6 @@ passport.use(
     }
   })
 );
-//Old approach and wrong one
-// passport.use(
-//   new JwtStrategy(opts, function (jwt_payload, done){  //done(error, isUserExist)
-//     User.findOne({id: jwt_payload.sub}, (err, user) => {
-//       if(err){
-//         return done(err, false)
-//       }
-//       if(user){
-//         return done(null, user)
-//       }
-//       else{
-//         return done(null, false)
-//       }
-//     })
-//   })
-// )
 
 app.use('/auth', authRoutes);
 app.use('/songs', songRoutes)
