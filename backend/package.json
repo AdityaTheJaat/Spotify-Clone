@@ -4,8 +4,7 @@
   "description": "Backend for Spotify clone",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "build":"echo success"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "Aditya Chaudhary",
