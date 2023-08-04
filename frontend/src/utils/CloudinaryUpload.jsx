@@ -7,7 +7,7 @@ const CloudinaryUpload = ({setUrl, setName, text}) => {
   const uploadImageWidget = () => {
     let myUploadWidget = openUploadWidget({
       cloudName:"damn2yl49",
-      uploadPreset:"dellcemx",
+      uploadPreset:UPLOAD_PRESET,
       sources: ["local"],
       },
       function (error, result){
