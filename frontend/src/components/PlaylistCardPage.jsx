@@ -52,7 +52,7 @@ const PlaylistCardPage = () => {
   return (
     <div className='h-full w-full overflow-auto rounded-xl bg-gradient-to-b from-[#1f2728] via-[#131618] to-[#070808]'>
       <PlaylistView title="Focus" data={focusData} />
-      <PlaylistView title="Spotify Playlist" data={focusData} />
+      {/* <PlaylistView title="Spotify Playlist" data={focusData} /> */}
       <PlaylistView title="Sound of India" data={focusData} />
       <div>
         <div className='text-2xl font-semibold pb-5 pl-5 text-white '>My Playlists</div>
