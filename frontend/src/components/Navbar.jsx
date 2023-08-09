@@ -5,7 +5,7 @@ import upload from "../resources/upload.svg";
 import user from "../resources/user.svg";
 import { Link, matchPath, useLocation } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { logout } from "../apiCalling/auth";
+// import { logout } from "../apiCalling/auth";
 
 const Navbar = () => {
 	const location = useLocation();
@@ -14,7 +14,7 @@ const Navbar = () => {
 	};
 	const [cookie, setCookie] = useCookies(["token"]);
 	const logoutHandler = async () => {
-		await logout();
+		// await logout();
 	};
 	return (
 		<div className="flex justify-between p-2 text-white bg-[#131618]">
