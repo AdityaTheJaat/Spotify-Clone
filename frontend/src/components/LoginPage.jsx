@@ -14,7 +14,6 @@ const LoginPage = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     const data = {email, password};
-    console.log(data)
     const response = await unAuthenticatedPostRequest('/auth/login', data, navigate, "login");
     if(response){
       toast.success("Login Successful!")

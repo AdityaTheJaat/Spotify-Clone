@@ -41,8 +41,10 @@ const PlaylistCardPage = () => {
   const [cookie, setCookie] = useCookies(["token"])
   useEffect(()=> {
     const getData = async () => {
-      const response = await getMyPlaylist(cookie.token)
-      setPlaylists(response.data.playlistDetails)
+      if(cookie.token){
+        const response = await getMyPlaylist(cookie.token)
+        setPlaylists(response.data.playlistDetails)
+      }
     }
     getData()
   }, [])
