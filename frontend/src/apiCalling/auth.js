@@ -23,7 +23,6 @@ export const logout = async () => {
   try{
     await axios.post(URL + '/auth/logout')
     toast.success('Logged Out Successfully')
-    localStorage.removeItem("token");
     toast.dismiss(toastId)
     //window.location="/login";
   } catch(err){
