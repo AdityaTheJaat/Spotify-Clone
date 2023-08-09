@@ -19,7 +19,6 @@ const CloudinaryUpload = ({setUrl, setName, text}) => {
         else{
           if(error){
             console.log(error)
-            toast.error("Not uploaded")
           }
         }
       }
