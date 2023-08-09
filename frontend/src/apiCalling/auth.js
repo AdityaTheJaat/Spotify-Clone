@@ -17,3 +17,18 @@ export const unAuthenticatedPostRequest = async (route, body, navigate, text) =>
   }
   toast.dismiss(toastId)
 }
+
+export const logout = async () => {
+  const toastId = toast.loading("Loading...")
+  try{
+    await axios.post(URL + '/auth/logout')
+    toast.success('Logged Out Successfully')
+    localStorage.removeItem("token");
+    toast.dismiss(toastId)
+    //window.location="/login";
+  } catch(err){
+    console.log(err)
+    console.log("Error while Logging Out!")
+  }
+  toast.dismiss(toastId)
+}

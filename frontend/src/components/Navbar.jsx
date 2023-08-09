@@ -6,6 +6,7 @@ import upload from '../resources/upload.svg'
 import user from '../resources/user.svg'
 import { Link, matchPath, useLocation } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
+import { logout } from '../apiCalling/auth'
 
 const Navbar = () => {
   const location = useLocation();
@@ -13,6 +14,9 @@ const Navbar = () => {
     return matchPath({path:route}, location.pathname)
   }
   const [cookie, setCookie] = useCookies(["token"]);
+  const logoutHandler = async () => {
+    await logout()
+  }
   return (
     <div className='flex justify-between p-2 text-white bg-[#131618]'>
       <div className='flex items-center justify-center'>
@@ -45,10 +49,11 @@ const Navbar = () => {
                     </Link>
                   )
             }
-            <button className='bg-white rounded-full text-black flex justify-center p-1 items-center text-lg cursor-pointer h-10 w-10'>
-              <img src={user} alt="" />
+            <button onClick={logoutHandler} className='bg-white rounded-full text-black flex justify-center p-1 items-center text-lg cursor-pointer h-10 w-10'>
+              {
+                !cookie.token ? (<p className='text-[11px]'>Logout</p>) : (<img src={user} alt="" />)
+              }
             </button>
-
           </div>) :
           (
             <div className='text-lg font-semibold flex justify-center items-center gap-5'>

@@ -96,3 +96,19 @@ exports.login = async(req, res) => {
     })
   }
 }
+
+exports.logout = async (req, res) => {
+  try {
+    await res.clearCookie('token', {path:'/'});
+    return res.status(200).json({
+      success: true,
+      message: "User Logged Out successfully"
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      success: false,
+      message: "Error while Logging Out! in backend"
+    });
+  }
+};
