@@ -56,7 +56,7 @@ const Navbar = () => {
 					<button
 						onClick={logoutHandler}
 						className="bg-white rounded-full text-black flex justify-center p-1 items-center text-lg cursor-pointer h-10 w-10">
-						{cookie.token ? (
+						{!cookie.token ? (
 							<p className="text-[11px]">Logout</p>
 						) : (
 							<img src={user} alt="" />

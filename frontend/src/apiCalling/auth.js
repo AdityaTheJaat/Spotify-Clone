@@ -1,7 +1,7 @@
 import axios from "axios"
 import { toast } from "react-hot-toast"
 
-const URL = process.env.REACT_APP_BACKEND_URL + '/auth' ;
+const URL = process.env.REACT_APP_BACKEND_URL;
 
 export const unAuthenticatedPostRequest = async (route, body, navigate, text) => {
   const toastId = toast.loading("Loading...")
