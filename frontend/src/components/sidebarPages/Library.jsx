@@ -15,7 +15,6 @@ const Library = () => {
     }
     getData()
   }, [])
-  console.log(playlists)
   return (
     <div className='py-5 px-3 grid gap-5 grid-cols-5'>
       {
