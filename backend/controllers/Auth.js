@@ -38,7 +38,7 @@ exports.signup = async(req, res) => {
       email, 
       userName, 
       password:hashedPassword, 
-      displayPicture:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`
+      displayPicture:`https://api.dicebear.com/7.x/pixel-art/svg?seed=${firstName} ${lastName}`
     })
     const token = await getToken(email, user);
     const userToReturn = { ...user.toJSON(), token };
@@ -77,7 +77,7 @@ exports.login = async(req, res) => {
     if(!isMatch) {
       return res.status(403).json({
         success:false,
-        message:"please enter correct password"
+        message:"Please enter correct password"
       })
     }
     const token = await getToken(exist.email, exist)

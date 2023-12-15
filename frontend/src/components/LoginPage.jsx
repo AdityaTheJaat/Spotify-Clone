@@ -22,9 +22,6 @@ const LoginPage = () => {
       const token = response.data.userToReturn.token;
       setCookie("token", token, {path:'/', expires:date});
     }
-    else{
-      toast.error("Failed Login!")
-    }
   }
   return (
     <div className='h-full w-full bg-gradient-to-b from-[#1f2728] via-[#131618] to-[#070808]'>

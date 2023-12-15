@@ -120,7 +120,7 @@ exports.getSongByName = async (req, res) => {
 				message: "Please give the song name",
 			});
 		}
-		const song = await Song.findOne({ name: songName }).populate("artist");
+		const song = await Song.findOne({ name: { $regex: new RegExp(songName, 'i') } }).populate("artist");
 		if (!song) {
 			return res.status(201).json({
 				success: true,
@@ -128,7 +128,6 @@ exports.getSongByName = async (req, res) => {
 				song,
 			});
 		}
-		console.log("Song fetched");
 		return res.status(201).json({
 			success: true,
 			message: `Fetched Song-${songName}`,

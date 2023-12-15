@@ -23,20 +23,17 @@ export const createPlaylist = async (body, token) => {
 }
 
 export const getMyPlaylist = async (token) => {
-  const toastId = toast.loading("Loading...")
   try{
     const response = await axios.get(URL+"/getPlaylistByMe", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    toast.dismiss(toastId)
     return response
   } catch(err){
     console.log(err)
-    console.log("Error while fetching songs!")
+    console.log("Error while fetching playlist!")
   }
-  toast.dismiss(toastId)
 }
 
 export const addToPlaylist = async (token, playlistId, songId) => {

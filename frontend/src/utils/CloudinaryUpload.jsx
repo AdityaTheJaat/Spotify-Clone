@@ -1,8 +1,6 @@
-import { toast } from "react-hot-toast";
 import { openUploadWidget } from "./CloudinaryService";
 
 const CloudinaryUpload = ({setUrl, setName, text}) => {
-  console.log(process.env.REACT_APP_UPLOAD_PRESET)
   const UPLOAD_PRESET = process.env.REACT_APP_UPLOAD_PRESET
   const uploadImageWidget = () => {
     let myUploadWidget = openUploadWidget({

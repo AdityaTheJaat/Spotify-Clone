@@ -43,7 +43,7 @@ const PlaylistCardPage = () => {
     const getData = async () => {
       if(cookie.token){
         const response = await getMyPlaylist(cookie.token)
-        setPlaylists(response.data.playlistDetails)
+        setPlaylists(response.data?.playlistDetails)
       }
     }
     getData()

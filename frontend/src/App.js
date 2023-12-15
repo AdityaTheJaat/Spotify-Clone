@@ -17,6 +17,7 @@ import Search from './components/sidebarPages/Search';
 import LikedSongs from './components/sidebarPages/LikedSongs';
 import CreatePlaylist from './components/sidebarPages/CreatePlaylist';
 import Model from './components/common/Model';
+import MyProfilePage from './components/MyProfilePage';
 
 function App() {
   const [cookie, setCookie] = useCookies(["token"]);
@@ -41,6 +42,7 @@ function App() {
                   <Route path='/home/search' element={<Search />} />
                   <Route path='/home/likedSongs' element={<LikedSongs />} />
                   <Route path='/home/createPlaylist' element={<CreatePlaylist />} />
+                  <Route path='/home/myProfile' element={<MyProfilePage />} />
                 </Route>
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/model' element={<Model />} />

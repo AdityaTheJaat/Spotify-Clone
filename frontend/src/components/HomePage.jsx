@@ -50,11 +50,11 @@ const HomePage = () => {
     const getData = async () => {
       if(cookie.token){
         const response = await getMyPlaylist(cookie.token)
-        setPlaylists(response.data.playlistDetails)
+        setPlaylists(response?.data?.playlistDetails)
       }
     }
-    getData()
-  }, [])
+    if(cookie.token) getData();
+  }, [cookie.token])
   const { currentModal, setCurrentModal, currentSong, currentPlaylist, playlistOpen, setPlaylistOpen } = useContext(SongContext)
   const clickHandler = () => {
     setCurrentModal(false)

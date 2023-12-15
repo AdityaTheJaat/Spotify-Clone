@@ -36,7 +36,6 @@ exports.getPlaylistByMe = async (req, res) => {
   try{
     const artistId = req.user._id;
     const playlistDetails = await Playlist.find({owner:artistId}).populate("owner").populate("songs")
-    console.log("Fetched Playlist")
     return res.status(201).json({
       success:true,
       message: "Fetched Playlist",

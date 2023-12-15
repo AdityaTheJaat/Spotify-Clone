@@ -8,7 +8,7 @@ const SongContext = createContext({
   currentModal:false,
   setCurrentModal:() => {},
   playlistOpen:false,
-  setPlaylistOpen:() => {}
+  setPlaylistOpen:() => {},
 })
 
 export default SongContext
