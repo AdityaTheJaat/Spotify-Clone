@@ -1,5 +1,4 @@
-const BlacklistedToken = require('../models/BlacklistedToken');
-const bcrypt=require('bcrypt');
+const bcrypt= require('bcrypt');
 const User = require('../models/User');
 const { getToken } = require('../utils/getToken');
 
@@ -100,25 +99,7 @@ exports.login = async(req, res) => {
 
 exports.logout = async (req, res) => {
   try {
-    const token = req.headers.authorization.split(' ')[1];
-    if (!token) {
-      return res.status(401).json({
-        success: false,
-        message: 'Unauthorized: No token provided',
-      });
-    }
-    const isBlacklisted = await BlacklistedToken.findOne({ token });
-    if (isBlacklisted) {
-      return res.status(401).json({
-        success: false,
-        message: 'Unauthorized: Token is blacklisted',
-      });
-    }
-    await BlacklistedToken.create({ token });
-    return res.status(200).json({
-      success: true,
-      message: 'Logout successful',
-    });
+    req.logout();
   } catch (err) {
     console.log(err);
     return res.status(500).json({
