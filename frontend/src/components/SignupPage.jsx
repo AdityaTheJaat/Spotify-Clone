@@ -25,9 +25,6 @@ const SignupPage = () => {
       const token = response.data.userToReturn.token;
       setCookie("token", token, {path:'/', expires:date});
     }
-    else{
-      toast.error("Failed SignUp!")
-    }
   }
   return (
     <div className='h-full w-full overflow-auto bg-gradient-to-b from-[#1f2728] via-[#131618] to-[#070808]'>

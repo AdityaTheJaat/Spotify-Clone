@@ -14,8 +14,9 @@ export const unAuthenticatedPostRequest = async (route, body, navigate, text) =>
   } catch(err){
     console.log(err)
     console.log("Error while Authentication!")
+    toast.dismiss(toastId)
+    toast.error(err.message)
   }
-  toast.dismiss(toastId)
 }
 
 export const logout = async () => {
