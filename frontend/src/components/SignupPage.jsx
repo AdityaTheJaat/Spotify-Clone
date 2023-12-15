@@ -17,9 +17,7 @@ const SignupPage = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
     const data = {firstName, lastName, email, userName, password};
-    console.log(data)
     const response = await unAuthenticatedPostRequest('/auth/register', data, navigate, "signup");
-    console.log(response)
     if(response){
       toast.success("SignUp Successful!")
       const date = new Date();
