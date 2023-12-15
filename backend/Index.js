@@ -12,7 +12,7 @@ require('dotenv').config();
 
 const app = express()
 app.use(cors({
-  origin:"https://spotify-clone-frontend-puce.vercel.app",
+  origin:["https://spotify-clone-frontend-puce.vercel.app", "http://localhost:3000/"],
 	credentials:true,
 }));
 app.use(express.json())
