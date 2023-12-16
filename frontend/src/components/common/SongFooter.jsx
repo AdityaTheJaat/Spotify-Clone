@@ -5,6 +5,7 @@ import { Howl } from 'howler';
 import shuffle from '../../resources/shuffle.svg'
 import previous from '../../resources/previous.svg'
 import bheart from '../../resources/b-heart.svg'
+import "./ProgressBar.css"
 import next from '../../resources/next.svg'
 import repeat from '../../resources/repeat.svg'
 import play from '../../resources/play.svg'
@@ -17,6 +18,7 @@ const SongFooter = () => {
   const token = cookie.token;
   const [soundPlayed, setSoundPlayed] = useState(null);
   const [pause, setPause] = useState(false);
+  const [progress, setProgress] = useState(0);
   const { currentSong, setCurrentSong } = useContext(SongContext)
   const playSound = () => {
     if(!soundPlayed){
@@ -54,7 +56,14 @@ const SongFooter = () => {
     return
   }
 
-  console.log(currentSong)
+  const updateProgress = (event) => {
+    const newValue = event.target.value;
+    setProgress(newValue);
+    if (soundPlayed) {
+      soundPlayed.seek(soundPlayed.duration() * (newValue / 100));
+    }
+  };
+
   return (
     <div className={`w-full flex justify-between items-center h-1/10 p-4 ${token ? "bg-black bg-opacity-80" : "bg-gradient-to-r from-[#8d369d] via-[#a55897] to-[#6789a0]"} text-white overflow-hidden absolute z-10 bottom-0`}>
       {
@@ -74,18 +83,18 @@ const SongFooter = () => {
                   <img src={shuffle} alt="" className='w-7 h-7 opacity-60 cursor-pointer' />
                   <img src={previous} alt="" className='w-7 h-7 cursor-pointer' />
                   {
-                    pause ? 
+                    !pause ? 
                       ( <img src={pausee} alt="" className='w-10 h-10 bg-white rounded-full p-1 cursor-pointer'
-                        onClick={() => {playSound()}} /> ) 
+                        onClick={() => {pauseSong()}} /> ) 
                         : 
                       ( <img src={play} alt="" className='w-10 h-10 bg-white rounded-full p-1 cursor-pointer' 
-                        onClick={() => {pauseSong()}} /> )
+                        onClick={() => {playSound()}} /> )
                   }
                   <img src={next} alt="" className='w-7 h-7 cursor-pointer' />
                   <img src={repeat} alt="" className='w-7 h-7 opacity-60 cursor-pointer' />
                 </div>
                 <div>
-                  Progress bar
+                  <input type="range" value={progress} onChange={updateProgress} className='w-full' />
                 </div>
               </div>
               <div className='w-1/4 flex justify-end gap-3 h-full'>
