@@ -36,6 +36,16 @@ export const getMyPlaylist = async (token) => {
   }
 }
 
+export const getAllPlaylist = async () => {
+  try{
+    const response = await axios.get(URL+"/getAllPlaylist")
+    return response
+  } catch(err){
+    console.log(err)
+    console.log("Error while fetching all playlist!")
+  }
+}
+
 export const addToPlaylist = async (token, playlistId, songId) => {
   const toastId = toast.loading("Loading...")
   const body = { playlistId, songId }

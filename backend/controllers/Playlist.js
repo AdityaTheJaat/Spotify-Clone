@@ -32,6 +32,23 @@ exports.createPlaylist = async (req, res) => {
   }
 }
 
+exports.getAllPlaylist = async (req, res) => {
+  try{
+    const playlists = await Playlist.find({}).populate("owner").populate("songs");
+    return res.status(201).json({
+      success:true,
+      message: "Fetched Playlist",
+      playlists
+    })
+  } catch(err){
+    console.log("Error while fetching Playlist")
+    return res.status(500).json({
+      success:false,
+      message: "Error while fetching Playlist!"
+    })
+  }
+}
+
 exports.getPlaylistByMe = async (req, res) => {
   try{
     const artistId = req.user._id;

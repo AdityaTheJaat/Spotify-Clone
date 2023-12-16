@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import SinglePlaylistCard from './common/SinglePlaylistCard';
 import SongContext from '../context/SongContext'
-import { getMyPlaylist } from '../apiCalling/playlist';
+import { getMyPlaylist, getAllPlaylist } from '../apiCalling/playlist';
 import SingleSongCard from './common/SingleSongCard'
 
 const focusData = [
@@ -20,7 +20,7 @@ const focusData = [
     id: "2",
     title: "Deep Focus",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    imgUrl: "data:image/jpeg;base64,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"
+    imgUrl: "https://imgs.search.brave.com/c8zUv6LQwsjiD3lgP9a9fuICIS8v9JbqDfB85ZDH8Tw/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzc3LzYyLzM4/LzM2MF9GXzI3NzYy/MzgzNV82WnZtUDhw/ZjRJdmpNUHNsaENS/dmFsUUZ6eGUzdGtU/cS5qcGc"
   },
   {
     id: "3",
@@ -46,6 +46,11 @@ const focusData = [
 const HomePage = () => {
   const [cookie, setCookie] = useCookies(["token"]);
   const [playlists, setPlaylists] = useState([]);
+  const [allPlaylist, setAllPlaylist] = useState([]);
+  const getPlaylists = async () => {
+    const response = await getAllPlaylist();
+    setAllPlaylist(response?.data?.playlists)
+  }
   useEffect(() => {
     const getData = async () => {
       if(cookie.token){
@@ -54,6 +59,7 @@ const HomePage = () => {
       }
     }
     if(cookie.token) getData();
+    getPlaylists()
   }, [cookie.token])
   const { currentModal, setCurrentModal, currentSong, currentPlaylist, playlistOpen, setPlaylistOpen } = useContext(SongContext)
   const clickHandler = () => {
@@ -97,6 +103,7 @@ const HomePage = () => {
           !cookie.token &&
           (
             <div className='h-full w-full overflow-auto rounded-xl bg-gradient-to-b from-[#1f2728] via-[#131618] to-[#070808]'>
+              {/* <PlaylistView title="Spotify Playlist" data={allPlaylist} /> */}
               <PlaylistView title="Focus" data={focusData} />
               <PlaylistView title="Spotify Playlist" data={focusData} />
               <PlaylistView title="Sound of India" data={focusData} />
