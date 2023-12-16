@@ -33,7 +33,7 @@ function App() {
           cookie.token ? (
             <SongContext.Provider value={{ currentSong, setCurrentSong, currentModal, setCurrentModal, playlistOpen, setPlaylistOpen, currentPlaylist, setCurrentPlaylist }}>
               <Routes>
-                <Route path='/' element={<DefaultPage />} />
+                <Route path='/' element={<HomePage />} />
                 <Route path='/home' element={<HomePage />} >
                   <Route path='/home/uploadSong' element={<UploadSong />} />
                   <Route path='/home/playlistsPage' element={<PlaylistCardPage />} />
