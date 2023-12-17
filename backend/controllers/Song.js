@@ -143,7 +143,7 @@ exports.getSongByName = async (req, res) => {
 };
 
 exports.likeSong = async (req, res) => {
-	try {
+	try{
 		const currentUser = req.user._id;
 		const songId = req.body._id;
 		const user = await User.findOne({ _id: currentUser }).populate("likedSongs");
@@ -154,7 +154,6 @@ exports.likeSong = async (req, res) => {
 			});
 		}
 		const song = await Song.findOne({ _id: songId });
-    console.log(song)
 		if (!song) {
 			return res.status(305).json({
 				success: false,
@@ -162,30 +161,74 @@ exports.likeSong = async (req, res) => {
 				user,
 			});
 		}
-    if (user.likedSongs.includes(songId)) {
-      console.log("Song already liked by the user");
-      return res.status(409).json({
-        success: false,
-        message: "Song already liked by the user",
-        user,
-      });
-    }
+		if(user.likedSongs.includes(songId)){
+			user.likedSongs = user.likedSongs.filter((song) => song !== songId);
+			await user.save();
+			return res.status(201).json({
+				success: true,
+				message: "UnLiked song",
+				user
+			});
+		}
 		user.likedSongs.push(songId);
 		await user.save();
-		console.log("Song Liked");
 		return res.status(201).json({
 			success: true,
-			message: `Song Liked`,
-			user,
+			message: "Liked song",
+			user
 		});
-	} catch (err) {
-		console.log("Error while Liking song");
+	}	catch(err){
 		return res.status(500).json({
 			success: false,
-			message: "Error while Liking song",
+			message: "Error while Liking/UnLiking song",
 		});
 	}
-};
+}
+
+// exports.likeSong = async (req, res) => {
+// 	try {
+// 		const currentUser = req.user._id;
+// 		const songId = req.body._id;
+// 		const user = await User.findOne({ _id: currentUser }).populate("likedSongs");
+// 		if (!user) {
+// 			return res.status(300).json({
+// 				success: false,
+// 				message: `User doesn't exist`,
+// 			});
+// 		}
+// 		const song = await Song.findOne({ _id: songId });
+//     console.log(song)
+// 		if (!song) {
+// 			return res.status(305).json({
+// 				success: false,
+// 				message: "Not a valid song id",
+// 				user,
+// 			});
+// 		}
+//     if (user.likedSongs.includes(songId)) {
+//       console.log("Song already liked by the user");
+//       return res.status(409).json({
+//         success: false,
+//         message: "Song already liked by the user",
+//         user,
+//       });
+//     }
+// 		user.likedSongs.push(songId);
+// 		await user.save();
+// 		console.log("Song Liked");
+// 		return res.status(201).json({
+// 			success: true,
+// 			message: `Song Liked`,
+// 			user,
+// 		});
+// 	} catch (err) {
+// 		console.log("Error while Liking song");
+// 		return res.status(500).json({
+// 			success: false,
+// 			message: "Error while Liking song",
+// 		});
+// 	}
+// };
 
 exports.unLikeSong = async (req, res) => {
 	try {
