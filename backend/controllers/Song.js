@@ -161,8 +161,8 @@ exports.likeSong = async (req, res) => {
 				user,
 			});
 		}
-		if(user.likedSongs.includes(songId)){
-			user.likedSongs = user.likedSongs.filter((song) => song !== songId);
+		if(user.likedSongs.some(likedSong => likedSong._id.equals(songId))){
+			user.likedSongs = user.likedSongs.filter(likedSong => !likedSong._id.equals(songId));
 			await user.save();
 			return res.status(201).json({
 				success: true,
