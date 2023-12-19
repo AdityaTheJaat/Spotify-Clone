@@ -64,14 +64,12 @@ exports.getLikedSongs = async (req, res) => {
 			});
 		}
 		const songsDetails = await User.find({ _id:userId }).populate("likedSongs");
-		console.log("Fetched all Liked songs");
 		return res.status(201).json({
 			success: true,
 			message: "Fetched all Liked songs",
 			songsDetails,
 		});
 	} catch (err) {
-		console.log("Error while getLikedSongs");
 		return res.status(500).json({
 			success: false,
 			message: "Error while getLikedSongs!",
@@ -96,14 +94,12 @@ exports.getAllSongsOfSpecificArtist = async (req, res) => {
 			});
 		}
 		const song = await Song.find({ artist: artistId });
-		console.log("Fetched all songs of artist");
 		return res.status(201).json({
 			success: true,
 			message: "Fetched all songs of artist",
 			song,
 		});
 	} catch (err) {
-		console.log("Error while fetching all songs of artist");
 		return res.status(500).json({
 			success: false,
 			message: "Error while fetching all songs of artist!",
@@ -134,7 +130,6 @@ exports.getSongByName = async (req, res) => {
 			song,
 		});
 	} catch (err) {
-		console.log("Error while fetching song");
 		return res.status(500).json({
 			success: false,
 			message: "Error while fetching song",
@@ -181,6 +176,30 @@ exports.likeSong = async (req, res) => {
 		return res.status(500).json({
 			success: false,
 			message: "Error while Liking/UnLiking song",
+		});
+	}
+}
+
+exports.getMyLikedSongs = async (req, res) => {
+	try{
+		const user = req.user._id;
+		if (!user) {
+			return res.status(300).json({
+				success: false,
+				message: `User doesn't exist`,
+			});
+		}
+		const userDetails = await User.findOne({ _id: user }).populate("likedSongs");
+		const songs = userDetails.likedSongs;
+		return res.status(201).json({
+			success: true,
+			message: "Liked song",
+			songs
+		});
+	}	catch(err){
+		return res.status(500).json({
+			success: false,
+			message: "Error while fetching liked songs",
 		});
 	}
 }

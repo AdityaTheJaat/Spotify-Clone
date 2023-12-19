@@ -72,20 +72,17 @@ export const getLikedSongs = async (token) => {
 }
 
 export const likeSong = async (token, body) => {
-  const toastId = toast.loading("Loading...")
   try{
     const response = await axios.post(URL+"/likeSong", body,  {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    toast.dismiss(toastId)
     return response
   } catch(err){
     console.log(err)
     console.log("Error while liking song!")
   }
-  toast.dismiss(toastId)
 }
 
 export const unLikeSong = async (token, body) => {

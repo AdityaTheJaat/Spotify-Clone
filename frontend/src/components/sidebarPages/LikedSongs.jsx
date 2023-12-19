@@ -9,7 +9,6 @@ const LikedSongs = () => {
   useEffect(()=> {
     const getData = async () => {
       const response = await getLikedSongs(cookie.token);
-      console.log(response)
       setData(response.data.songsDetails[0].likedSongs);
     }
     getData()
@@ -17,9 +16,9 @@ const LikedSongs = () => {
   return (
     <div className='text-white'>
       {
-        data.map((item, index) => (
+        data.length === 0 ? (<div className='ml-96 mt-80 font-extrabold text-6xl text-white'>No Liked Song</div>) : (data.map((item, index) => (
           <SingleSongCard key={index} info={item} />
-        ))
+        )))
       }
     </div>
   )

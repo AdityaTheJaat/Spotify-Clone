@@ -40,12 +40,12 @@ const sideBar = [
     iconName:add,
     linkTo:"/home/createPlaylist"
   },
-  // {
-  //   id:6,
-  //   name: "Liked Songs",
-  //   iconName:like,
-  //   linkTo:"/home/likedSongs"
-  // },
+  {
+    id:6,
+    name: "Liked Songs",
+    iconName:like,
+    linkTo:"/home/likedSongs"
+  },
 ]
 
 const Sidebar = () => {
