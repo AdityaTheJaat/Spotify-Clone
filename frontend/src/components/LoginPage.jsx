@@ -40,7 +40,7 @@ const LoginPage = () => {
             placeholder='Email Id'
             value={email}
             onChange={(e)=>{setEmail(e.target.value)}}
-            className="w-full rounded-[0.5rem] bg-slate-800 p-[12px]"
+            className="w-full rounded-[0.5rem] bg-slate-800 p-[24px]"
           />
         </div>
         <div className='relative'>
@@ -62,7 +62,7 @@ const LoginPage = () => {
             placeholder='Password'
             value={password}
             onChange={(e)=>{setPassword(e.target.value)}}
-            className="w-full rounded-[0.5rem] bg-slate-800 p-[12px]"
+            className="w-full rounded-[0.5rem] bg-slate-800 p-[24px]"
           />
         </div>
         <button type='submit' className='bg-green-500 rounded-2xl py-3 w-[30%] px-2'>Log In</button>

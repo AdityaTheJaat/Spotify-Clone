@@ -44,7 +44,7 @@ const SignupPage = () => {
               placeholder='First name.'
               value={firstName}
               onChange={(e)=>{setFirstName(e.target.value)}}
-              className="w-full rounded-[0.5rem] bg-slate-800 p-[12px]"
+              className="w-full rounded-[0.5rem] bg-slate-800 p-[24px]"
             />
           </div>
           <div>
@@ -56,7 +56,7 @@ const SignupPage = () => {
               placeholder='Last name.'
               value={lastName}
               onChange={(e)=>{setLastName(e.target.value)}}
-              className="w-full rounded-[0.5rem] bg-slate-800 p-[12px]"
+              className="w-full rounded-[0.5rem] bg-slate-800 p-[24px]"
             />
           </div>
         </div>
@@ -69,7 +69,7 @@ const SignupPage = () => {
             placeholder='Enter your user name.'
             value={userName}
             onChange={(e)=>{setUserName(e.target.value)}}
-            className="w-full rounded-[0.5rem] bg-slate-800 p-[12px]"
+            className="w-full rounded-[0.5rem] bg-slate-800 p-[24px]"
           />
           <p className='text-gray-400'>This appears on your profile</p>
         </div>
@@ -82,7 +82,7 @@ const SignupPage = () => {
             placeholder='Enter your email.'
             value={email}
             onChange={(e)=>{setEmail(e.target.value)}}
-            className="w-full rounded-[0.5rem] bg-slate-800 p-[12px]"
+            className="w-full rounded-[0.5rem] bg-slate-800 p-[24px]"
           />
         </div>
         <div className='relative'>
@@ -104,7 +104,7 @@ const SignupPage = () => {
             placeholder='Password'
             value={password}
             onChange={(e)=>{setPassword(e.target.value)}}
-            className="w-full rounded-[0.5rem] bg-slate-800 p-[12px]"
+            className="w-full rounded-[0.5rem] bg-slate-800 p-[24px]"
           />
         </div>
         <button type='submit' className='bg-green-500 rounded-2xl py-2 md:py-3 md:w-[30%] mx-auto px-8'>Sign up</button>
