@@ -24,7 +24,7 @@ const MyProfilePage = () => {
         <p>Name: {fn} {ln} </p>
         <p>Email id: {ei}</p>
       </div>
-      <button onClick={logoutHandler} className="bg-white ml-[630px] text-black rounded-3xl text-xl px-9 py-3">Logout</button>
+      <button onClick={logoutHandler} className="bg-white ml-[580px] text-black rounded-3xl text-xl px-9 py-3">Logout</button>
     </div>
   )
 }
